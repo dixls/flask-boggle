@@ -1,0 +1,9 @@
+<table>
+    {% for row in board %}
+        <tr>
+            {% for letter in row %}
+            <td>{{letter}}</td>
+            {% endfor %}
+        </tr>
+    {% endfor %}
+</table>
