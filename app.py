@@ -5,6 +5,9 @@ from flask_debugtoolbar import DebugToolbarExtension
 app = Flask(__name__)
 app.debug = True
 app.config['SECRET_KEY'] = 'my-secret-key'
+app.config['TESTING'] = True
+app.config['DEBUG_TB_HOSTS'] = ['dont-show-debug-toolbar']
+
 
 toolbar = DebugToolbarExtension(app)
 
@@ -12,7 +15,7 @@ boggle_game = Boggle()
 
 
 @app.route('/')
-def boggle():
+def board_render():
 
     game_board = boggle_game.make_board()
 
