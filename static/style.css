@@ -6,18 +6,28 @@ body {
 .container{
     width: 80%;
     display: flex;
-    margin:auto
+    color: whitesmoke;
+    margin:auto;
+    flex-wrap:wrap;
 }
 .title{
     display: block;
-    color: whitesmoke;
     margin: auto;
+    color: whitesmoke;
     padding: 10px;
     text-align: center;
 }
+.guess-form{
+    margin:auto;
+    display:block;
+}
+.break{
+    flex-basis: 100%;
+    padding:20px
+}
 #game-board{
     display: block;
-    margin:auto
+    margin:auto;
 }
 td {
     height: 20px;
@@ -28,4 +38,5 @@ td {
     padding: 10px;
     border-radius: 5px;
     font-size: 1rem;
+    color: black
 }

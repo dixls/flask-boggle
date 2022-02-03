@@ -1,7 +1,9 @@
 {% block form %}
-<form action="/submit" method="post">
-    <label for="guess">submit a word!</label>
-    <input type="text" name="guess">
-    <button>submit</button>
-</form>
+<div class="guess-form">
+    <form action="/submit" method="post">
+        <label for="guess">submit a word!</label>
+        <input type="text" name="guess">
+        <button>submit</button>
+    </form>
+</div>
 {% endblock %}
