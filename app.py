@@ -25,12 +25,28 @@ def board_render():
 
 @app.route('/guess', methods=["POST"])
 def check_guess():
+    global correct_guesses
     guess = request.get_json()['guess']
     result = boggle_game.check_valid_word(game_board, guess)
+    response = {
+        'answers': correct_guesses,
+        'result': False
+    }
     if result == 'ok':
-        print('ok')
+        if guess in correct_guesses:
+            response.message = "You already got that one."
+        else:
+            correct_guesses.append(guess)
+            response[result] = True
+        return response
     elif result == 'not-on-board':
-        print('that word is not on the board')
+        return response
     elif result == 'not-word':
-        print("that's not even a word")
-    return "almost ready"
+        return response
+
+@app.route('/guess', methods=["GET"])
+def get_guesses():
+    response = {
+        'answers': correct_guesses
+    }
+    return response
