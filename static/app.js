@@ -10,6 +10,6 @@ $form.on('submit', async function(event){
     event.preventDefault();
     const guess = $guess.val();
     let result = await makeGuess(guess);
-    $guess.val() = '';
+    $guess.val('');
 
 })
