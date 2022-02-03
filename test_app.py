@@ -13,3 +13,4 @@ class BoardRenderTestCase(TestCase):
             self.assertEqual(resp.status_code, 200)
             self.assertIn('<tr>', html)
             self.assertIn('<td>', html)
+    

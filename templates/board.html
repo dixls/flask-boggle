@@ -2,6 +2,11 @@
 
 {% block title %}{{title}}{% endblock %}
 {% block container %}
+<form action="restart" method="get" class="restartBtn">
+    <button>Restart</button>
+</form>
+<div class="break"></div>
+{% include 'scoreboard.html' %}
 <table id="game-board">
     {% for row in board %}
         <tr>

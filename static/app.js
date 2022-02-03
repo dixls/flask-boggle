@@ -2,6 +2,8 @@ const $form = $('#guess-form');
 const $guess = $('#guess');
 const $word_list = $('#word_list');
 const $msg = $('#message')
+const $scoreBoard = $('#scoreboard')
+const $restart = $('.restartBtn')
 
 let correctGuesses = []
 
@@ -11,6 +13,8 @@ async function onPageLoad(){
     result = await getGuesses();
     correctGuesses = result.data.answers;
     updateWordList(correctGuesses);
+    $msg.hide()
+    $scoreBoard.text(calcScore());
 }
 
 async function makeGuess(guess){
@@ -56,8 +60,8 @@ function updateMessage(result){
 
 function calcScore(){
     let score = 0;
-    for (let word in correctGuesses){
-        score += word.length
+    for (let word of correctGuesses){
+        score += word.length;
     }
     return score
 }
@@ -73,6 +77,8 @@ async function submitGuess(event){
     updateWordList(correctGuesses);
 
     updateMessage(result);
+
+    $scoreBoard.text(calcScore());
 }
 
 $form.on('submit', submitGuess)

@@ -1,5 +1,5 @@
 from boggle import Boggle
-from flask import Flask, render_template, request
+from flask import Flask, redirect, render_template, request
 from flask_debugtoolbar import DebugToolbarExtension
 
 app = Flask(__name__)
@@ -25,6 +25,7 @@ def board_render():
 
 @app.route('/guess', methods=["POST"])
 def check_guess():
+    """checks submitted guess and returns a dict with the updated list of correct guesses and a message and status if relevant"""
     global correct_guesses
     guess = request.get_json()['guess']
     result = boggle_game.check_valid_word(game_board, guess)
@@ -50,7 +51,21 @@ def check_guess():
 
 @app.route('/guess', methods=["GET"])
 def get_guesses():
+    """a route for the front end to retrieve correct guesses list without submitting a new guess"""
     response = {
         'answers': correct_guesses
     }
     return response
+
+@app.route('/restart')
+def restart_game():
+    """creates a new board, and resets the list of correct guesses"""
+    global game_board
+    global correct_guesses
+    global boggle_game
+
+    boggle_game = Boggle()
+    game_board = boggle_game.make_board()
+    correct_guesses = []
+
+    return redirect('/')

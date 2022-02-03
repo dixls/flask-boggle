@@ -28,6 +28,14 @@ body {
 .word-list{
     font-size: 1.4rem;
 }
+.restartBtn{
+    margin:auto;
+    padding: 0;
+} .restartBtn button{
+    background-color: whitesmoke;
+    padding: 10px;
+    border-radius: 8px;
+}
 #message{
     text-align: center;
     margin:auto;
@@ -48,6 +56,12 @@ body {
 #game-board{
     display: block;
     margin:auto;
+}
+#scoreboard{
+    display: block;
+    margin:auto;
+    text-align: center;
+    font-size: 3rem;
 }
 td {
     height: 20px;
