@@ -1,5 +1,5 @@
 from boggle import Boggle
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from flask_debugtoolbar import DebugToolbarExtension
 
 app = Flask(__name__)
@@ -24,7 +24,8 @@ def board_render():
     return render_template('board.html', board=game_board, title=title)
 
 @app.route('/guess', methods=["POST"])
-def check_guess(guess):
+def check_guess():
+    guess = request.get_json()['guess']
     result = boggle_game.check_valid_word(game_board, guess)
     if result == 'ok':
         print('ok')
@@ -32,4 +33,4 @@ def check_guess(guess):
         print('that word is not on the board')
     elif result == 'not-word':
         print("that's not even a word")
-    
+    return "almost ready"

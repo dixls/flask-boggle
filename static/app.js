@@ -6,10 +6,10 @@ async function makeGuess(guess){
     console.log(result);
 }
 
-$form.on('submit', function(event){
+$form.on('submit', async function(event){
     event.preventDefault();
-    const guess = $guess.value();
+    const guess = $guess.val();
     let result = await makeGuess(guess);
-    $guess.value() = '';
+    $guess.val() = '';
 
 })
