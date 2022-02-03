@@ -25,6 +25,9 @@ body {
     flex-basis: 100%;
     padding:20px
 }
+.word-list{
+    font-size: 1.4rem;
+}
 #game-board{
     display: block;
     margin:auto;

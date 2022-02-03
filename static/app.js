@@ -1,6 +1,7 @@
 const $form = $('#guess-form');
 const $guess = $('#guess');
 const $word_list = $('#word_list');
+const $msg = $('#message')
 
 let correctGuesses = []
 
@@ -14,7 +15,6 @@ async function onPageLoad(){
 
 async function makeGuess(guess){
     const result = await axios.post('/guess', {'guess': guess});
-    console.log(result);
     return result;
 }
 async function getGuesses(){
@@ -29,6 +29,37 @@ function updateWordList(wordList){
     }
 }
 
+function updateMessage(message, result){
+    if (result == false){
+        $msg.attr("class", "warning").show().text(message)
+    } else if (result == true) { 
+        $msg.attr("class", "success").show().text(message)
+    } else{
+        $msg.attr("class", "").hide().text('')
+    }
+
+}
+
+// function gameTimer(){
+//     let gameTime = 60;
+//     while(gameTime > 0){
+//         setTimeout(function(){
+//             gameTime
+//         }, 1000)
+//     }
+//     if (gameTime == 0){
+//         //end game?
+//     }
+// }
+
+function calcScore(){
+    let score = 0;
+    for (let word in correctGuesses){
+        score += word.length
+    }
+    return score
+}
+
 async function submitGuess(event){
     event.preventDefault();
 
@@ -38,6 +69,10 @@ async function submitGuess(event){
 
     correctGuesses = result.data.answers;
     updateWordList(correctGuesses);
+
+    const status = result.data.result;
+    const msg = result.data.mesage;
+    updateMessage(msg,status);
 }
 
 $form.on('submit', submitGuess)

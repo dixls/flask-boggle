@@ -30,18 +30,22 @@ def check_guess():
     result = boggle_game.check_valid_word(game_board, guess)
     response = {
         'answers': correct_guesses,
-        'result': False
+        'result': False,
+        'message': ''
     }
     if result == 'ok':
-        if guess in correct_guesses:
-            response.message = "You already got that one."
+        if guess.capitalize() in correct_guesses:
+            response['message'] = "You already got that one."
         else:
-            correct_guesses.append(guess)
-            response[result] = True
+            correct_guesses.append(guess.capitalize())
+            response['result'] = True
+            response['message'] = "Nice one!"
         return response
     elif result == 'not-on-board':
+        response['message'] = "That's not here!"
         return response
     elif result == 'not-word':
+        response['message'] = "That's not even a word!"
         return response
 
 @app.route('/guess', methods=["GET"])
