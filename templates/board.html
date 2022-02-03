@@ -1,4 +1,6 @@
-<table>
+{% extends 'base.html' %}
+{% block container %}
+<table id="game-board">
     {% for row in board %}
         <tr>
             {% for letter in row %}
@@ -7,3 +9,4 @@
         </tr>
     {% endfor %}
 </table>
+{% endblock %}

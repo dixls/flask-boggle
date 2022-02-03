@@ -1,0 +1,24 @@
+body {
+    background-color: rgb(22, 33, 46);
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+.container{
+    width: 80%;
+    display: flex;
+    margin:auto
+}
+#game-board{
+    display: block;
+    margin:auto
+}
+td {
+    height: 20px;
+    width: 20px;
+    background-color: whitesmoke;
+    text-align: center;
+    margin: auto;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 1rem;
+}
