@@ -17,7 +17,7 @@ body {
     padding: 10px;
     text-align: center;
 }
-.guess-form{
+#guess-form{
     margin:auto;
     display:block;
 }
