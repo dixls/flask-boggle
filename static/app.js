@@ -29,10 +29,12 @@ function updateWordList(wordList){
     }
 }
 
-function updateMessage(message, result){
-    if (result == false){
+function updateMessage(result){
+    let status = result.data.result;
+    let message = result.data.message;
+    if (status == false){
         $msg.attr("class", "warning").show().text(message)
-    } else if (result == true) { 
+    } else if (status == true) { 
         $msg.attr("class", "success").show().text(message)
     } else{
         $msg.attr("class", "").hide().text('')
@@ -70,9 +72,7 @@ async function submitGuess(event){
     correctGuesses = result.data.answers;
     updateWordList(correctGuesses);
 
-    const status = result.data.result;
-    const msg = result.data.mesage;
-    updateMessage(msg,status);
+    updateMessage(result);
 }
 
 $form.on('submit', submitGuess)

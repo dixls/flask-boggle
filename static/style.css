@@ -28,6 +28,23 @@ body {
 .word-list{
     font-size: 1.4rem;
 }
+#message{
+    text-align: center;
+    margin:auto;
+    display: block;
+    font-size: 1rem;
+    width: 80%;
+    padding: 10px;
+    max-width: 300px;
+    border-width: 2px;
+    border-radius: 5px;
+    border-color: white;
+}#message.warning{
+    background-color: tomato;
+}#message.success{
+    background-color: rgba(0, 255, 76, 0.555);
+    font-style: italic;
+}
 #game-board{
     display: block;
     margin:auto;
