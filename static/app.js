@@ -4,6 +4,7 @@ const $word_list = $('#word_list');
 const $msg = $('#message')
 const $scoreBoard = $('#scoreboard')
 const $restart = $('.restartBtn')
+const $timer = $('#timer')
 
 let correctGuesses = []
 
@@ -46,17 +47,17 @@ function updateMessage(result){
 
 }
 
-// function gameTimer(){
-//     let gameTime = 60;
-//     while(gameTime > 0){
-//         setTimeout(function(){
-//             gameTime
-//         }, 1000)
-//     }
-//     if (gameTime == 0){
-//         //end game?
-//     }
-// }
+function gameTimer(){
+    let gameTime = 60;
+    let timer = setInterval(() => {
+        gameTime--
+        $timer.text(gameTime)
+        if (gameTime <= 0) {
+            clearInterval(timer);
+            $('#guess-form :input').prop("disabled", "true")
+        }
+    }, 1000);
+}
 
 function calcScore(){
     let score = 0;
@@ -82,3 +83,5 @@ async function submitGuess(event){
 }
 
 $form.on('submit', submitGuess)
+
+gameTimer();

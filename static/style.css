@@ -47,9 +47,9 @@ body {
     border-width: 2px;
     border-radius: 5px;
     border-color: white;
-}#message.warning{
+} #message.warning{
     background-color: tomato;
-}#message.success{
+} #message.success{
     background-color: rgba(0, 255, 76, 0.555);
     font-style: italic;
 }
@@ -58,10 +58,24 @@ body {
     margin:auto;
 }
 #scoreboard{
+    width: 50px;
     display: block;
     margin:auto;
     text-align: center;
-    font-size: 3rem;
+    font-size: 2rem;
+}
+#timer{
+    width:50px;
+    display: block;
+    margin:auto;
+    text-align: center;
+    font-size: 2rem;
+}
+#game-stats{
+    display: block;
+    margin:auto;
+} #game-stats td{
+    font-size: .75rem;
 }
 td {
     height: 20px;
