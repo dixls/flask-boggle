@@ -8,6 +8,13 @@ body {
     display: flex;
     margin:auto
 }
+.title{
+    display: block;
+    color: whitesmoke;
+    margin: auto;
+    padding: 10px;
+    text-align: center;
+}
 #game-board{
     display: block;
     margin:auto

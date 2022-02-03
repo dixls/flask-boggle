@@ -13,10 +13,11 @@ toolbar = DebugToolbarExtension(app)
 
 boggle_game = Boggle()
 game_board = boggle_game.make_board()
+title = "Let's Play Boggle!"
 
 @app.route('/')
 def board_render():
 
     global game_board
 
-    return render_template('board.html', board=game_board)
+    return render_template('board.html', board=game_board, title=title)
