@@ -5,7 +5,6 @@ from flask_debugtoolbar import DebugToolbarExtension
 app = Flask(__name__)
 app.debug = True
 app.config['SECRET_KEY'] = 'my-secret-key'
-app.config['TESTING'] = True
 app.config['DEBUG_TB_HOSTS'] = ['dont-show-debug-toolbar']
 
 
@@ -28,6 +27,7 @@ def check_guess():
     """checks submitted guess and returns a dict with the updated list of correct guesses and a message and status if relevant"""
     global correct_guesses
     guess = request.get_json()['guess']
+    print(request.get_json())
     result = boggle_game.check_valid_word(game_board, guess)
     response = {
         'answers': correct_guesses,
